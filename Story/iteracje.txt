@@ -1,0 +1,55 @@
+I.
+- Stworzyæ uruchamialna aplikacje na androida. 
+- zaimplementowaæ interfejs graficzny z przyciskami, przy klikniêciu na dane pole(New game,sounds,hiscores,about,exit), wykona siê dana funkcja
+  wykona siê dana funkcja(pusta) 
+
+
+II.
+Implementacja:
+-  przycisk "about" wyœwietla informacje o autorze i wersji aplikacji. 
+-  mo¿liwoœæ wybrania ustawieñ(easy,medium,hard).
+-  mo¿liwoœæ sprawdzenia statystyk z poprzednich rozgrywek 
+-  mo¿liwoœæ rozpoczêcie nowej rozgrywki, 
+-  mo¿liwoœæ wy³¹czanie aplikacji za pomoc¹ przycisku "exit"
+
+III.
+- stworzenie graficznego roz³o¿enia kart na stole w formie prostok¹ta (x*y=2k), zaimportowaæ do projektu seriê unikalnych obrazów kart, które bêd¹ wyœwietlane. 
+
+
+IV.
+Rozgrywka:
+- mozliwoœæ klikniecia na kartê, którego wynikiem bedzie jej ods³oniecie, brak mozliwosci interakcji z ta kart¹ jeœli jest ods³oniêta. 
+- mo¿liwoœæ klikniecia na druga kartê, ktorego wynikiem jest jej ods³oniêcie. Nastêpuje tu porównanie tych dwóch kart, jeœli s¹ identyczne bêd¹ ju¿ ods³oniete do koñca rozgrywki, w przeciwnym wypadku zostaj¹ one z powrotem zakryte. - 1
+- zakoñczenie rozgrywki po ods³oniêciu wszystkich kart
+
+V.
+- mo¿liwoœæ powrotu do main menu za pomoc¹ "back button", gra zostaje zatrzymana, nowa mo¿liwoœæ w menu "resume game", która wznawia poprzedni¹ gre 
+- timer widoczny w trakcie gry. 
+- timer w³¹czany po odkryciu pierwszej karty 
+- po ods³oniêciu wszystkich kart, zostaje wyœwietlony ekran ze statystykami z gry - takimi jak czas gry, liczba pope³nionych b³êdów, ... . 
+- Mo¿liwoœæ podania swojego imienia i wpisanie go do hiscores. 
+- powrót do menu g³ównego po podaniu swojego imienia. 
+
+
+VI.
+Efekty dŸwiêkowe:
+- implementacja efektów dŸwiêkowych w ró¿nych momentach gry( ods³oniêciu kart,gdy karty sa takie same,po ukoñczeniu rozgrywki...) 
+- opcja wy³¹czaj¹ca/w³¹czaj¹ca efekty dŸwiêkowe 
+- opcja wy³¹czaj¹ca/w³¹czaj¹ca muzykê. 
+- Implementacja muzyki w trakcie gry
+
+VII.
+- Poprawki graficzne, dopracowanie efektów, optymalizacja, niedoci¹gniêcia poprzednich iteracji. 
+- mo¿liwoœæ uruchomienia aplikacji i poprawne dzia³anie na ró¿nych urz¹dzeniach. 
+
+
+
+
+
+
+
+
+
+
+
+

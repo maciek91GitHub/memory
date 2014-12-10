@@ -1,0 +1,82 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/tapeta" >
+
+    <Button
+        android:id="@+id/newGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="100dp"
+        android:background="#674742"
+        android:minHeight="48dip"
+        android:minWidth="170dip"
+        android:textColor="#FF0000"
+        android:onClick="newGameClick"
+        android:textSize="30dp"
+        android:text="@string/new_game" />
+
+    <Button
+        android:id="@+id/hiscores"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/newGameButton"
+        android:layout_below="@+id/newGameButton"
+        android:layout_marginTop="16dp"
+        android:background="#674742"
+        android:minHeight="48dip"
+        android:minWidth="170dip"
+        android:textColor="#FF0000"
+        android:textSize="30dp"
+        android:onClick="hiscoresClick"
+        android:text="@string/hiscores" />
+
+    <Button
+        android:id="@+id/sounds"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/hiscores"
+        android:layout_below="@+id/hiscores"
+        android:layout_marginTop="16dp"
+        android:background="#674742"
+        android:minHeight="48dip"
+        android:minWidth="170dip"
+        android:textColor="#FF0000"
+        android:textSize="30dp"
+        android:onClick="soundsClick"
+        android:text="@string/sounds" />
+
+    <Button
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/sounds"
+        android:layout_below="@+id/sounds"
+        android:layout_marginTop="16dp"
+        android:background="#674742"
+        android:minHeight="48dip"
+        android:minWidth="170dip"
+        android:textColor="#FF0000"
+        android:textSize="30dp"
+        android:onClick="aboutClick"
+        android:text="@string/about" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/about"
+        android:layout_below="@+id/about"
+        android:layout_marginTop="16dp"
+        android:background="#674742"
+        android:minHeight="48dip"
+        android:minWidth="170dip"
+        android:textColor="#FF0000"
+        android:textSize="30dp"
+        android:onClick="exitClick"
+        android:text="@string/exit" />
+
+</RelativeLayout>

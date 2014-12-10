@@ -1,0 +1,29 @@
+<resources>
+
+    <string name="app_name">memory</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Memory</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="new_game">New Game</string>
+    <string name="sounds">Sounds</string>
+    <string name="hiscores">Hiscores</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="memory">Memory Game</string>
+    <string name="title_activity_hiscores">Hiscores</string>
+    <string name="title_activity_sounds">Sounds</string>
+    <string name="title_activity_about">About</string>
+    <string name="title_activity_newgame">Newgame</string>
+    <string name="title_activity_easy_hiscores">EasyHiscores</string>
+    <string name="title_activity_medium_hiscores">MediumHiscores</string>
+    <string name="autor">Project is Created by Michal Mogila</string>
+    <string name="version">Version 0.1</string>
+    <string name="music">Music</string>
+    <string name="sound_effect">Sound Effects</string>
+    <string name="hard">Hard</string>
+    <string name="medium">Medium</string>
+    <string name="easy">Easy</string>
+    <string name="difficulty">Select difficulty:</string>
+
+</resources>
