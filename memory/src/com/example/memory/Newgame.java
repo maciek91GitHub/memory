@@ -17,19 +17,19 @@ public class Newgame extends Activity {
     	Intent intent = new Intent(this, GameActivity.class);
     	intent.putExtra("difficulty", 1); // easy == 1
     	startActivity(intent);
-    	android.os.Process.killProcess(android.os.Process.myPid());
+    	finish();
     }
     public void mediumButtonClick(View view){
     	Intent intent = new Intent(this, GameActivity.class);
     	intent.putExtra("difficulty", 2); // medium == 2
     	startActivity(intent);
-    	android.os.Process.killProcess(android.os.Process.myPid());
+    	finish();
     }
     public void hardButtonClick(View view){
     	Intent intent = new Intent(this, GameActivity.class);
     	intent.putExtra("difficulty", 3); // hard==3
     	startActivity(intent);
-    	android.os.Process.killProcess(android.os.Process.myPid());
+    	finish();
     }
 
 }

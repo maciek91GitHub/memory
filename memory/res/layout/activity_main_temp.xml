@@ -6,12 +6,28 @@
     android:background="@drawable/tapeta" >
 
     <Button
-        android:id="@+id/newGameButton"
+        android:id="@+id/resumeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
+        android:background="#674742"
+        android:minHeight="48dip"
+        android:minWidth="170dip"
+        android:textColor="#FF0000"
+        android:onClick="resumeClick"
+        android:textSize="30dp"
+        android:text="@string/resume" />
+    
+    <Button
+        android:id="@+id/newGameButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        
+        android:layout_alignLeft="@+id/resumeButton"
+        android:layout_below="@+id/resumeButton"
+        android:layout_marginTop="16dp"
         android:background="#674742"
         android:minHeight="48dip"
         android:minWidth="170dip"
