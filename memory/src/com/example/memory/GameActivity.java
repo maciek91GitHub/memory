@@ -1,6 +1,8 @@
 package com.example.memory;
 
+import java.util.Iterator;
 import java.util.Random;
+import java.util.Vector;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -18,10 +20,49 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 
+class ImageManager {
+	Vector<Bitmap> images;
+	Bitmap inverted;
+	int rand;
+	public ImageManager(){
+		images = new Vector<Bitmap>();
+		inverted = null;
+		rand = new Random().nextInt(999);
+	}
+	void setDefault(Bitmap b){
+		inverted = b;
+	}
+	void scaleAll(int imgWidth){
+		Iterator<Bitmap> it = images.listIterator();
+		for(int i =0;i<images.size();i++){
+			Bitmap b = images.get(i);
+			images.set(i, b.createScaledBitmap(b, imgWidth, imgWidth, false));
+		}
+		if (inverted != null){
+			inverted = inverted.createScaledBitmap(inverted, imgWidth, imgWidth, false);
+		}
+	}
+	Bitmap getInverted(){
+		return inverted;
+	}
+	Bitmap getImage(int id){
+		if (id < images.size()){
+			return images.get((id+rand)%images.size());
+		}
+		return null;
+	}
+	void add(Bitmap b){
+		images.add(b);
+	}
+	void setInverted(Bitmap b){
+		inverted = b;
+	}
+}
+
 class DrawView extends View {
 	Paint paint = new Paint();
 	int diff;
-	Bitmap[] obrazki = new Bitmap[16];
+	ImageManager imageManager = new ImageManager();
 	int[][] tab;
 	boolean[][] odkryta;
 	int maxX;
@@ -53,21 +94,36 @@ class DrawView extends View {
 		maxH = canvas.getHeight();
 		maxW = canvas.getWidth();
 		int imgWidth = ((maxW - (10 * (maxX + 1))) / maxX);
-		for (int i = 0; i < 16; i++) {
+		/*for (int i = 0; i < 16; i++) {
 			obrazki[i] = obrazki[i].createScaledBitmap(obrazki[i], imgWidth,
 					imgWidth, false);
-		}
+		}*/
+		imageManager.scaleAll(imgWidth);
 		int cordY = 10;
 		int cordX = 10;
 		paint.setColor(Color.BLACK);
+		paint.setTextSize(25);
+
 		for (int i = 0; i < maxY; i++) {
 			for (int j = 0; j < maxX; j++) {
-				canvas.drawRect(cordX - 2, cordY - 2, cordX + imgWidth + 2,
-						cordY + imgWidth + 2, paint);
 				if (odkryta[i][j]) {
-					canvas.drawBitmap(obrazki[tab[i][j]], cordX, cordY, paint);
+					Bitmap b = imageManager.getImage(tab[i][j]);
+					if(b != null){
+						canvas.drawRect(cordX - 2, cordY - 2, cordX + imgWidth + 2,
+								cordY + imgWidth + 2, paint);
+						canvas.drawBitmap(b, cordX, cordY, paint);
+					}else{
+						canvas.drawText(""+tab[i][j], cordX + imgWidth/2, cordY + imgWidth/2, paint);;
+					}
 				} else {
-					canvas.drawBitmap(obrazki[15], cordX, cordY, paint);
+					Bitmap b = imageManager.getInverted();
+					if(b != null){
+						canvas.drawRect(cordX - 2, cordY - 2, cordX + imgWidth + 2,
+								cordY + imgWidth + 2, paint);
+						canvas.drawBitmap(b, cordX, cordY, paint);
+					}else{
+						canvas.drawText("X", cordX + imgWidth/2, cordY + imgWidth/2, paint);;
+					}
 				}
 				cordX = cordX + imgWidth + 10;
 
@@ -78,7 +134,7 @@ class DrawView extends View {
 		String stringTime = "time: " + time;
 		String stringMovements = "movements: " + movements;
 		canvas.drawText(stringMovements, 20, maxH - 70, paint);
-		canvas.drawText(stringTime, 140, maxH - 70, paint);
+		canvas.drawText(stringTime, 250, maxH - 70, paint);
 	}
 }
 
@@ -308,38 +364,22 @@ public class GameActivity extends Activity implements OnTouchListener {
 		}
 
 		Resources res = getResources();
-		drawView.obrazki[0] = BitmapFactory
-				.decodeResource(res, R.drawable.img1);
-		drawView.obrazki[1] = BitmapFactory
-				.decodeResource(res, R.drawable.img2);
-		drawView.obrazki[2] = BitmapFactory
-				.decodeResource(res, R.drawable.img3);
-		drawView.obrazki[3] = BitmapFactory
-				.decodeResource(res, R.drawable.img4);
-		drawView.obrazki[4] = BitmapFactory
-				.decodeResource(res, R.drawable.img5);
-		drawView.obrazki[5] = BitmapFactory
-				.decodeResource(res, R.drawable.img6);
-		drawView.obrazki[6] = BitmapFactory
-				.decodeResource(res, R.drawable.img7);
-		drawView.obrazki[7] = BitmapFactory
-				.decodeResource(res, R.drawable.img8);
-		drawView.obrazki[8] = BitmapFactory
-				.decodeResource(res, R.drawable.img9);
-		drawView.obrazki[9] = BitmapFactory.decodeResource(res,
-				R.drawable.img10);
-		drawView.obrazki[10] = BitmapFactory.decodeResource(res,
-				R.drawable.img11);
-		drawView.obrazki[11] = BitmapFactory.decodeResource(res,
-				R.drawable.img12);
-		drawView.obrazki[12] = BitmapFactory.decodeResource(res,
-				R.drawable.img13);
-		drawView.obrazki[13] = BitmapFactory.decodeResource(res,
-				R.drawable.img14);
-		drawView.obrazki[14] = BitmapFactory.decodeResource(res,
-				R.drawable.img15);
-		drawView.obrazki[15] = BitmapFactory.decodeResource(res,
-				R.drawable.hide);
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img1));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img2));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img3));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img4));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img5));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img6));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img7));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img8));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img9));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img10));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img11));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img12));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img13));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img14));
+		drawView.imageManager.add(BitmapFactory.decodeResource(res, R.drawable.img15));
+		drawView.imageManager.setInverted(BitmapFactory.decodeResource(res, R.drawable.hide));
 		drawView.setOnTouchListener(this);
 		setContentView(drawView);
 
